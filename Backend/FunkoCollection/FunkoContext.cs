@@ -10,6 +10,7 @@ namespace FunkoCollection
     public class FunkoContext : DbContext
     {
         public DbSet<Funko> Funkos { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,99 +23,117 @@ namespace FunkoCollection
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Category>().HasData(
+                new Category()
+                {
+                    CategoryId = 1,
+                    Name = "Naruto"
+                },
+                new Category()
+                {
+                    CategoryId = 2,
+                    Name = "Game of Thrones"
+                },
+                new Category()
+                {
+                    CategoryId = 3,
+                    Name = "Star Wars"
+                });
+
             modelBuilder.Entity<Funko>().HasData(
                 new Funko()
                 {
                     FunkoId = 1,
-                    Name = "",
+                    Name = "Naruto",
                     CategoryId = 1,
-                    Image = "", 
+                    Image = "/images/naruto.jpg" 
                 },
                 new Funko()
                 {
                     FunkoId = 2,
-                    Name = "",
+                    Name = "Sasuke",
                     CategoryId = 1,
-                    Image = "",
+                    Image = "/images/sasuke.jpg"
                 },
                 new Funko()
                 {
                     FunkoId = 3,
-                    Name = "",
+                    Name = "Sakura",
                     CategoryId = 1,
-                    Image = "",
+                    Image = "/images/sakura.jpg"
                 },
                 new Funko()
                 {
                     FunkoId = 4,
-                    Name = "",
+                    Name = "Kakashi",
                     CategoryId = 1,
-                    Image = "",
+                    Image = "/images/kakashi.jpg"
 
                 },
 
                 new Funko()
                 {
                     FunkoId = 5,
-                    Name = "",
+                    Name = "Jon Snow",
                     CategoryId = 2,
-                    Image = "",
+                    Image = "/images/jonsnow.jpeg"
                 },
 
                 new Funko()
                 {
                     FunkoId = 6,
-                    Name = "",
+                    Name = "Daenerys",
                     CategoryId = 2,
-                    Image = "",
+                    Image = "/images/daenerys.jpeg"
                 },
                 new Funko()
                 {
                     FunkoId = 7,
-                    Name = "",
+                    Name = "Cersei",
                     CategoryId = 2,
-                    Image = "",
+                    Image = "/images/cersei.jpeg"
 
                 },
 
                 new Funko()
                 {
                     FunkoId = 8,
-                    Name = "",
+                    Name = "The Night King",
                     CategoryId = 2,
-                    Image = "",
+                    Image = "/images/nightking.jpeg"
                 },
 
                 new Funko()
                 {
                     FunkoId = 9,
-                    Name = "",
+                    Name = "Darth Vader",
                     CategoryId = 3,
-                    Image = "",
+                    Image = "/images/darthvader.jpg"
                 },
                 new Funko()
                 {
                     FunkoId = 10,
-                    Name = "",
+                    Name = "Storm Trooper",
                     CategoryId = 3,
-                    Image = "",
+                    Image = "/images/stormtrooper.jpg"
 
                 },
 
                 new Funko()
                 {
                     FunkoId = 11,
-                    Name = "",
+                    Name = "Chewbacca",
                     CategoryId = 3,
-                    Image = "",
+                    Image = "/images/chewbacca.jpg"
                 },
 
                 new Funko()
                 {
                     FunkoId = 12,
-                    Name = "",
+                    Name = "Yoda",
                     CategoryId = 3,
-                    Image = "",
+                    Image = "/images/yoda.jpg"
                 });
         }
     }

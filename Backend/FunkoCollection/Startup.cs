@@ -27,7 +27,7 @@ namespace FunkoCollection
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddCors(o => o.AddPolicy("MyFunko", builder =>
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
                        .AllowAnyMethod()
@@ -49,7 +49,7 @@ namespace FunkoCollection
             {
                 app.UseHsts();
             }
-            app.UseCors("MyFunko");
+            app.UseCors("MyPolicy");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
