@@ -26,6 +26,12 @@ namespace FunkoCollection.Controllers
             return repo.GetAll();
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<Funko> Get(int id)
+        {
+            return repo.GetById(id);
+        }
+
         [HttpPost]
         public ActionResult<bool> Post([FromBody] Funko funko)
         {
@@ -37,6 +43,14 @@ namespace FunkoCollection.Controllers
         public ActionResult<bool> Post(int id, [FromBody] Funko funko)
         {
             repo.Edit(funko);
+            return true;
+        }
+
+        [HttpPost("{id}")]
+        public ActionResult<bool> Post(int id)
+        {
+            var funko = repo.GetById(id);
+            repo.Delete(funko);
             return true;
         }
     }
