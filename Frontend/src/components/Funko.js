@@ -5,11 +5,10 @@ class Funko extends Component {
     deleteFunko = id => {
         const url = "https://localhost:44384/api/funko/" + id;
         fetch(url, {
+            method: "DELETE",
             headers: {
                 "Content-type": "application/json"
-            },
-            method: "POST",
-            mode: "no-cors"
+            }
         })
         .then(res => {
             if (res.ok) {
@@ -28,6 +27,7 @@ class Funko extends Component {
         <div className="funko">
             <img src={imgPath} />
             <span>{funkoName}</span>
+            <input type="text" value={} onChange={} />
             <div className="buttons">
             <button>Edit</button><button onClick={() => this.deleteFunko(funkoId)}>Delete</button>
             </div>

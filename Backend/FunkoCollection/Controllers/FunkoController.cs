@@ -46,8 +46,8 @@ namespace FunkoCollection.Controllers
             return true;
         }
 
-        [HttpPost("{id}")]
-        public ActionResult<bool> Post(int id)
+        [HttpDelete("{id}")]
+        public ActionResult<bool> Delete(int id)
         {
             var funko = repo.GetById(id);
             repo.Delete(funko);
