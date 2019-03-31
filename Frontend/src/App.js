@@ -7,7 +7,8 @@ class App extends Component {
       super();
       this.state = {
         categories: [],
-        name: ""     
+        name: "",
+        image: ""     
       }
     }
 
@@ -16,6 +17,42 @@ class App extends Component {
         .then(res => res.json())
         .then(json => this.setState({ categories: json}))
     }
+
+    addNewFunko = (categoryId) => {
+      const createdFunko = {
+        name: this.state.name,
+        image: this.state.image,
+        categoryId: categoryId
+      };
+
+      fetch("https://localhost:44384/api/funko", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(createdFunko)
+      })
+      .then(res => {
+        if (res.ok) {
+          const categoryIndex = categoryId - 1;
+          const newFunkos = [...this.state.categories[categoryIndex].funkos, createdFunko];
+          const updatedCategory = this.state.categories[categoryIndex];
+          updatedCategory.funkos = newFunkos;
+          const newCategories = this.state.categories;
+          newCategories[categoryIndex] = updatedCategory;
+
+          this.setState({ categories: newCategories });
+        }
+      });
+    };
+
+    setNewName = text => {
+      this.setState({ name: text });
+    };
+
+    setNewImage = text => {
+      this.setState({ image: text });
+    };
 
     updateFunko = (newFunkoId, newCategoryId, newImage) => {
       const newFunko = {
@@ -63,9 +100,14 @@ class App extends Component {
           <Category 
             funkos={item.funkos} 
             name={item.name} 
+            categoryId = {item.categoryId}
             updateFunko={this.updateFunko}
             setFunkoName={this.setFunkoName}
             funkoText={this.name}  
+            image={this.image}
+            addNewFunko={this.addNewFunko}
+            setNewName={this.setNewName}
+            setNewImage={this.setNewImage}
           />
         ));
         return (
