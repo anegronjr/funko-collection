@@ -10,12 +10,19 @@ class App extends Component {
       }
     }
 
-    
+    componentDidMount() {
+      fetch("https://localhost:44384/api/category")
+        .then(res => res.json())
+        .then(json => this.setState({ categories: json}))
+    }
 
     render() {
+        const categoryItems = this.state.categories.map(item => (
+          <Category funkos={item.funkos} name={item.name} />
+        ));
         return (
         <div className="App">
-          <Category />
+          {categoryItems}
         </div>
         );
     }
