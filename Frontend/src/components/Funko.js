@@ -27,7 +27,7 @@ class Funko extends Component {
         <div className="funko">
             <img src={imgPath} />
             <span>{funkoName}</span>
-            <input type="text" value={} onChange={} />
+            {/* <input type="text" value={} onChange={} /> */}
             <div className="buttons">
             <button>Edit</button><button onClick={() => this.deleteFunko(funkoId)}>Delete</button>
             </div>
