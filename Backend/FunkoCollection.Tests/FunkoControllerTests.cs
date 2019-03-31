@@ -21,6 +21,18 @@ namespace FunkoCollection.Tests
         }
 
         [Fact]
+        public void Get_Returns_Single_Funko()
+        {
+            var expectedId = 1;
+            repo.GetById(expectedId).Returns(new Funko() { FunkoId = expectedId });
+
+            var result = underTest.Get(expectedId);
+            var actualId = result.Value.FunkoId;
+
+            Assert.Equal(expectedId, actualId);
+        }
+
+        [Fact]
         public void Get_Returns_List_Of_Funkos()
         {
             var expected = new List<Funko>() { new Funko() };
@@ -39,5 +51,20 @@ namespace FunkoCollection.Tests
             Assert.True(result.Value);
         }
 
+        [Fact]
+        public void Post_Updates_Funko()
+        {
+            var result = underTest.Post(1, new Funko());
+
+            Assert.True(result.Value);
+        }
+
+        [Fact]
+        public void Post_Deletes_Funko()
+        {
+            var result = underTest.Post(1);
+
+            Assert.True(result.Value);
+        }
     }
 }

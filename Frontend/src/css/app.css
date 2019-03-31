@@ -7,3 +7,54 @@
 body {
     
 }
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    max-width: 1500px;
+    align-items: center;
+}
+
+.funko-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.funko {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 50px 25px 50px;
+
+}
+
+.funko img {
+    width: 250px;
+    box-shadow: 0px 0px 5px #444;
+}
+
+.funko span {
+    margin-top: 10px;
+    font-size: 18px;  
+}
+
+.funko input[type="text"] {
+    display: none;
+}
+
+.save {
+    display: none;
+}
+
+.cancel {
+    display: none;
+}

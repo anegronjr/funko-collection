@@ -20,9 +20,26 @@ namespace FunkoCollection.Repositories
             return db.Funkos.ToList();
         }
 
+        public Funko GetById(int id)
+        {
+            return db.Funkos.Single(funko => funko.FunkoId == id);
+        }
+
         public void Add(Funko funko)
         {
             db.Funkos.Add(funko);
+            db.SaveChanges();
+        }
+
+        public void Edit(Funko funko)
+        {
+            db.Update(funko);
+            db.SaveChanges();
+        }
+
+        public void Delete(Funko funko)
+        {
+            db.Remove(funko);
             db.SaveChanges();
         }
     }
