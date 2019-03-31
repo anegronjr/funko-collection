@@ -13,23 +13,30 @@ namespace FunkoCollection.Controllers
     [ApiController]
     public class FunkoController : ControllerBase
     {
-        IFunkoRepository funkoRepo;
+        IFunkoRepository repo;
 
-        public FunkoController(IFunkoRepository funkoRepo)
+        public FunkoController(IFunkoRepository repo)
         {
-            this.funkoRepo = funkoRepo;
+            this.repo = repo;
         }
 
         [HttpGet]
         public ActionResult<List<Funko>> Get()
         {
-            return funkoRepo.GetAll();
+            return repo.GetAll();
         }
 
         [HttpPost]
         public ActionResult<bool> Post([FromBody] Funko funko)
         {
-            funkoRepo.Add(funko);
+            repo.Add(funko);
+            return true;
+        }
+
+        [HttpPost("{id}")]
+        public ActionResult<bool> Post(int id, [FromBody] Funko funko)
+        {
+            repo.Edit(funko);
             return true;
         }
     }

@@ -10,5 +10,7 @@ namespace FunkoCollection.Repositories
     {
         List<Funko> GetAll();
         void Add(Funko funko);
+        void Edit(Funko funko);
+        void Delete(Funko funko);
     }
 }

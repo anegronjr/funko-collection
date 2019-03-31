@@ -25,5 +25,17 @@ namespace FunkoCollection.Repositories
             db.Funkos.Add(funko);
             db.SaveChanges();
         }
+
+        public void Edit(Funko funko)
+        {
+            db.Update(funko);
+            db.SaveChanges();
+        }
+
+        public void Delete(Funko funko)
+        {
+            db.Funkos.Remove(funko);
+            db.SaveChanges();
+        }
     }
 }
