@@ -44,6 +44,17 @@ body {
 
 .funko span {
     margin-top: 10px;
-    font-size: 18px;
-    
+    font-size: 18px;  
+}
+
+.funko input[type="text"] {
+    display: none;
+}
+
+.save {
+    display: none;
+}
+
+.cancel {
+    display: none;
 }
