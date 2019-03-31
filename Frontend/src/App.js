@@ -25,7 +25,7 @@ class App extends Component {
         image: newImage
       };
 
-      const url = "https://localhost:44384/api/funko" + newFunkoId;
+      const url = "https://localhost:44384/api/funko/" + newFunkoId;
 
       fetch(url, {
         method: "POST",
@@ -54,9 +54,19 @@ class App extends Component {
       });
     };
 
+    setFunkoName = text => {
+      this.setState({ name: text })
+    }
+
     render() {
         const categoryItems = this.state.categories.map(item => (
-          <Category funkos={item.funkos} name={item.name} />
+          <Category 
+            funkos={item.funkos} 
+            name={item.name} 
+            updateFunko={this.updateFunko}
+            setFunkoName={this.setFunkoName}
+            funkoText={this.name}  
+          />
         ));
         return (
         <div className="App">

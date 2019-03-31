@@ -20,16 +20,22 @@ class Funko extends Component {
         });
       };
 
+      saveChanges = () => {
+          this.props.updateFunko(this.props.funkoId, this.props.categoryId, this.props.imgPath);
+      }
+
     render() {
-        const { imgPath, funkoName, funkoId } = this.props;
+        const { imgPath, funkoName, funkoId, funkoText } = this.props;
 
         return (
         <div className="funko">
             <img src={imgPath} />
             <span>{funkoName}</span>
-            {/* <input type="text" value={} onChange={} /> */}
+            <input type="text" value={funkoText} onChange={this.props.funkoNameChange} />
             <div className="buttons">
-            <button>Edit</button><button onClick={() => this.deleteFunko(funkoId)}>Delete</button>
+            <button>Edit</button>
+            <button onClick={this.saveChanges}>Save Changes</button>
+            <button onClick={() => this.deleteFunko(funkoId)}>Delete</button>
             </div>
         </div>
         );
