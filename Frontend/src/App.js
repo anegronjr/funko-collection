@@ -16,6 +16,8 @@ class App extends Component {
         .then(json => this.setState({ categories: json}))
     }
 
+
+
     render() {
         const categoryItems = this.state.categories.map(item => (
           <Category funkos={item.funkos} name={item.name} />

@@ -25,8 +25,6 @@ namespace FunkoCollection
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -34,6 +32,7 @@ namespace FunkoCollection
                        .AllowAnyHeader();
             }));
 
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<FunkoContext>();
             services.AddScoped<IFunkoRepository, FunkoRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();

@@ -39,7 +39,7 @@ namespace FunkoCollection.Repositories
 
         public void Delete(Funko funko)
         {
-            db.Funkos.Remove(funko);
+            db.Remove(funko);
             db.SaveChanges();
         }
     }
